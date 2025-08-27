@@ -9,12 +9,12 @@ const Header = () => {
                 <div className='header-wrapper'>
                     <div className='header-wrapper__logo'>
                       <img src={userImg} />
-                      <a><span>Users</span></a>
+                      <a href="../../App.jsx" ><span>Users</span></a>
                   </div>
                   <div className='header-wrapper__lists'>
                       <ul>
                           <li>
-                              <a href=''>
+                              <a href='../Posts/Posts.jsx'>
                                   <span>Posts</span>
                               </a>
                           </li>
