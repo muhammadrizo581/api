@@ -3,23 +3,31 @@ import React, { useEffect, useState } from 'react'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import "./Posts.scss"
+import errorImg from "../../assets/err-img.png"
 
 const Posts = () => {
     const [data,setData] = useState([])
+    const [loading,setLoading] = useState(true)
+    const [error,setError] = useState(null)
 
     useEffect(() => {
         axios.get("https://jsonbek.uz/api/posts")
             .then(res => setData(res.data))
-            .catch(err => console.log(err))
-            .finally()
+            .catch(err => setError(err))
+            .finally(()=> setLoading(false))
     }, [])
 
     return (
-        <>
-          <Header/>
+        <>          
             <section className='posts'>
               <div className='container'>
-                  <div className='posts-wrapper'>
+              {error && <div className='error'>
+                        <img src={errorImg} />
+                          <strong>{error?.message} <br/> Error on posts</strong>
+                      </div>}
+                    <div className='posts-wrapper'>            
+                      {loading && <><strong className='loading'>Loading...</strong></>}
+              
                     {
                       data?.map((item, index) =>{
                         return (
@@ -35,7 +43,7 @@ const Posts = () => {
                 </div>
               </div>
             </section>
-          <Footer/>
+          
       </>
   )
 }

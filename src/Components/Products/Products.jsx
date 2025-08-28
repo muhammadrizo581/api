@@ -1,21 +1,34 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import "./Products.scss"
+import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
+import errorImg from "../../assets/err-img.png"
 
 const Products = () => {
-        const [data,setData] = useState([])
+    const [data,setData] = useState([])
+    const [loading,setLoading] = useState(true)
+    const [error,setError] = useState(null)
 
     useEffect(() => {
-        axios.get("https://jsonbek.uz/api/products")
+        axios.get("https://jsonbek.uz/api/prsoducts")
             .then(res => setData(res.data))
-            .catch(err => console.log(err))
-            .finally()
+            .catch(err => setError(err))
+            .finally(()=> setLoading(false))
     }, [])
   return (
       <>
+          
         <section className='products'>
               <div className='container'>
-                  <div className='products-wrapper'>
+                {error &&
+                  <div className='error'>
+                      <img src={errorImg} />
+                      <strong>{error?.message} <br/> Error on products</strong>
+                  </div>}
+                    <div className='products-wrapper'>            
+                        {loading && <><strong className='loading'>Loading...</strong></>}                        
+          
                     {
                       data?.map((item, index) =>{
                           return (
@@ -35,7 +48,8 @@ const Products = () => {
                     }
                 </div>
               </div>
-            </section>
+          </section>
+          
       </>
   )
 }

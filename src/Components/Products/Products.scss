@@ -1,6 +1,20 @@
 .products{
     margin-top: 100px;
+    .error{
+            width: 100%;
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            font-size: 18px;   
+            height: 54vh;         
+    }
     &-wrapper{
+        .loading{
+            font-size: 24px;
+        }
         display: grid;
         grid-template-columns: repeat(4,1fr);
         gap: 30px;
