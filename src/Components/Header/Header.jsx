@@ -9,17 +9,17 @@ const Header = () => {
                 <div className='header-wrapper'>
                     <div className='header-wrapper__logo'>
                       <img src={userImg} />
-                      <a href="../../App.jsx" ><span>Users</span></a>
+                      <a href="#" ><span>Users</span></a>
                   </div>
                   <div className='header-wrapper__lists'>
                       <ul>
                           <li>
-                              <a href='../Posts/Posts.jsx'>
+                              <a href='#'>
                                   <span>Posts</span>
                               </a>
                           </li>
                           <li>
-                              <a href=''>
+                              <a href='#'>
                                   <span>Products</span>
                               </a>
                           </li>
