@@ -11,7 +11,7 @@ const Products = () => {
     const [error,setError] = useState(null)
 
     useEffect(() => {
-        axios.get("https://jsonbek.uz/api/prsoducts")
+        axios.get("https://jsonbek.uz/api/products")
             .then(res => setData(res.data))
             .catch(err => setError(err))
             .finally(()=> setLoading(false))
